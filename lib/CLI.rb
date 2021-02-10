@@ -5,17 +5,21 @@ class CLI
     def call
         puts ""
         puts "Welcome to the charity search app!"
-        puts "Please enter your zipcode to find charitable causes in your area"
-        puts "To exit the app, enter 'exit'"
         puts ""
-        menu
+        self.menu
     end
 
     def menu
-        
-        API.getting_zipcode
+        puts ""
+        puts "Please enter your zipcode to find charitable causes in your area"
+        puts "To exit the app, enter 'exit'"
+        puts ""
 
-        #input = gets.strip
+        input = gets.strip
+
+        API.getting_zipcode(input)
+
+        
         if input == "zipcode"
             puts "zipcode"
             zipcode_list
