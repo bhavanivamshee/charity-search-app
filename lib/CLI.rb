@@ -12,10 +12,13 @@ class CLI
     end
 
     def menu
-        input = gets.strip
+        
+        API.getting_zipcode
 
+        #input = gets.strip
         if input == "zipcode"
             puts "zipcode"
+            zipcode_list
         elsif input == "exit"
             puts "exit"
         else
@@ -36,10 +39,10 @@ class CLI
 
     def second_menu
         second_input = gets.strip.downcase
-        if input == "yes"
-            puts "more information"
 
-        else input == "exit"
+        if second_input == "yes"
+            puts "more information"
+        else second_input == "exit"
             puts "Thank you for stopping by! Goodbye :)"
         end
 
