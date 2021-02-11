@@ -3,30 +3,32 @@
 class CLI 
 
     def call
-        puts ""
-        puts "Welcome to the charity search app!"
-        puts ""
+        puts "----------------------------------".light_magenta
+        puts "Welcome to the charity search app!".light_magenta
+        puts "----------------------------------".light_magenta
         self.first_menu
     end
 
     def first_menu
         puts ""
-        puts "Please enter your zipcode to find charitable causes in your area"
+        puts "Please enter your zipcode below to find charitable causes in your area.".light_magenta
         puts ""
         input = gets.strip
         zipcode_check = API.getting_zipcode(input)
         if zipcode_check 
         zipcode
         else 
-            puts "That zipcode was invalid"
+            puts "That zipcode was invalid, please try again.".red
             first_menu
         end
     end
 
     def zipcode
-            puts "Here is a list of charities in your zipcode"
+            puts ""
+            puts "Here is a list of charities in your zipcode:".light_magenta
+            puts ""
            Charity.all.each_with_index do |charity, index|
-                puts "#{index +1}. #{charity.charityName}"
+                puts "#{index +1}. #{charity.charityName}".light_blue
             end
             puts ""
         zipcode_list
@@ -34,8 +36,7 @@ class CLI
 
     def zipcode_list
         puts ""
-        puts "Would you like more information on these charities?"
-        puts "Please enter the name of the charity"
+        puts "For more information, please enter the name of the charity".light_magenta
         puts ""
         second_input = gets.strip.upcase
         charity_array = []
@@ -46,7 +47,7 @@ class CLI
         if charity_array.include? second_input
         charity_details(second_input)
         else 
-            puts "Invalid entry, please enter a charity name."
+            puts "Invalid entry, please enter a charity name.".red
             zipcode_list
         end
     end
@@ -54,22 +55,22 @@ class CLI
      def charity_details(charity)
        more_info = Charity.find_by_name(charity)
        more_info.each do |i|
-        puts "Name: #{i.charityName}"
-        puts "URL: #{i.url}"
-        puts "Category: #{i.category}"
-        puts "Mission Statement: #{i.missionStatement}"
-        puts "City: #{i.city}"
+        puts "Name: #{i.charityName}".light_blue
+        puts "URL: #{i.url}".light_blue
+        puts "Category: #{i.category}".light_blue
+        puts "Mission Statement: #{i.missionStatement}".light_blue
+        puts "City: #{i.city}".light_blue
        end
        second_menu
     end
 
     def second_menu
         puts ""
-        puts "I hope you found the information you were looking for!"
-        puts "Please enter the number of an option below"
-        puts "1. I want to check another zipcode"
-        puts "2. I want to get more information on a charity in my zipcode"
-        puts "3. I would like to exit"
+        puts "I hope you found the information you were looking for!".light_magenta
+        puts "Please enter the number of an option below".light_magenta
+        puts "1. I want to check another zipcode".light_blue
+        puts "2. I want to get more information on a charity in my zipcode".light_blue
+        puts "3. I would like to exit".light_blue
         puts ""
         third_input = gets.strip
         final_menu(third_input)
@@ -80,11 +81,14 @@ class CLI
             first_menu
         elsif number == "2"
             zipcode
-        else number == "3"
-            puts ""
-            puts "Thank you for using the charity search app! Have a nice day :)"
-            puts ""
+        elsif number == "3"
+            puts "--------------------------------------------------------------".light_magenta
+            puts "Thank you for using the charity search app! Have a nice day :)".light_magenta
+            puts "--------------------------------------------------------------".light_magenta
             exit
+        else
+            puts "Oops! Invalid Entry, please try again".red
+            second_menu
         end
     end
 

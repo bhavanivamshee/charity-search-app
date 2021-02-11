@@ -2,4 +2,4 @@
 
 require_relative('../config/environment')
 
-CLI.new.first_menu
+CLI.new.call
