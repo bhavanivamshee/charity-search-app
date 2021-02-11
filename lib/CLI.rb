@@ -14,27 +14,22 @@ class CLI
         puts "Please enter your zipcode to find charitable causes in your area"
         puts "To exit the app, enter 'exit'"
         puts ""
+        input = gets.strip
+        zipcode_check = API.getting_zipcode(input)
         zipcode
     end
 
     def zipcode
-
-        input = gets.strip
-
-        API.getting_zipcode(input)
-
             puts "Here is a list of charities in your zipcode"
             Charity.all.each_with_index do |charity, index|
                 puts "#{index +1}. #{charity.charityName}"
             end
             puts ""
         zipcode_list
-
     end
 
     def zipcode_list
         puts ""
-        puts "Here is the list of charities in your zipcode"
         puts "Would you like more information on these charities?"
         puts "Please enter the name of the charity, or 'exit'"
         puts ""
@@ -42,7 +37,7 @@ class CLI
         second_menu(second_input)
     end
 
-    def second_menu(charity)
+     def second_menu(charity)
        more_info = Charity.find_by_name(charity)
 
        more_info.each do |i|
@@ -52,9 +47,32 @@ class CLI
         puts "Mission Statement: #{i.missionStatement}"
         puts "City: #{i.city}"
        end
-
-        binding.pry
+       third_menu
     end
 
+    def third_menu
+        puts ""
+        puts "I hope you found the information you were looking for!"
+        puts "Please enter the number of an option below"
+        puts "1. I want to check another zipcode"
+        puts "2. I want to get more information on a charity in my zipcode"
+        puts "3. I would like to exit"
+        puts ""
+        third_input = gets.strip
+        final_menu(third_input)
+    end
+
+    def final_menu(number)
+        if number == "1"
+            first_menu
+        elsif number == "2"
+            zipcode
+        else number == "3"
+            puts ""
+            puts "Thank you for using the charity search app! Have a nice day :)"
+            puts ""
+            exit
+        end
+    end
 
 end
