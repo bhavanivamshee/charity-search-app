@@ -44,14 +44,14 @@ class CLI
         end
 
         if charity_array.include? second_input
-        second_menu(second_input)
+        charity_details(second_input)
         else 
             puts "Invalid entry, please enter a charity name."
             zipcode_list
         end
     end
 
-     def second_menu(charity)
+     def charity_details(charity)
        more_info = Charity.find_by_name(charity)
        more_info.each do |i|
         puts "Name: #{i.charityName}"
@@ -60,10 +60,10 @@ class CLI
         puts "Mission Statement: #{i.missionStatement}"
         puts "City: #{i.city}"
        end
-       third_menu
+       second_menu
     end
 
-    def third_menu
+    def second_menu
         puts ""
         puts "I hope you found the information you were looking for!"
         puts "Please enter the number of an option below"
