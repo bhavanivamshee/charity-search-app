@@ -12,16 +12,20 @@ class CLI
     def first_menu
         puts ""
         puts "Please enter your zipcode to find charitable causes in your area"
-        puts "To exit the app, enter 'exit'"
         puts ""
         input = gets.strip
         zipcode_check = API.getting_zipcode(input)
+        if zipcode_check 
         zipcode
+        else 
+            puts "That zipcode was invalid"
+            first_menu
+        end
     end
 
     def zipcode
             puts "Here is a list of charities in your zipcode"
-            Charity.all.each_with_index do |charity, index|
+           Charity.all.each_with_index do |charity, index|
                 puts "#{index +1}. #{charity.charityName}"
             end
             puts ""
@@ -31,15 +35,24 @@ class CLI
     def zipcode_list
         puts ""
         puts "Would you like more information on these charities?"
-        puts "Please enter the name of the charity, or 'exit'"
+        puts "Please enter the name of the charity"
         puts ""
         second_input = gets.strip.upcase
+        charity_array = []
+        Charity.all.each do |charity|
+            charity_array << "#{charity.charityName}"
+        end
+
+        if charity_array.include? second_input
         second_menu(second_input)
+        else 
+            puts "Invalid entry, please enter a charity name."
+            zipcode_list
+        end
     end
 
      def second_menu(charity)
        more_info = Charity.find_by_name(charity)
-
        more_info.each do |i|
         puts "Name: #{i.charityName}"
         puts "URL: #{i.url}"
