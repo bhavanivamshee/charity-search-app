@@ -1,6 +1,5 @@
 class API
 
-    @@api_key = "f3fcb8bcb50c531df9b42dddb70e940b"
 
     def self.getting_zipcode(zip)
         response = RestClient.get("http://data.orghunter.com/v1/charitysearch?user_key=f3fcb8bcb50c531df9b42dddb70e940b&zipCode=#{zip}")
