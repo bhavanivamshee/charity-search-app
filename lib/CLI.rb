@@ -11,21 +11,21 @@ class CLI
 
     def first_menu
         puts ""
-        puts "Please enter your zipcode below to find charitable causes in your area.".light_magenta
+        puts "Please enter your zip code below to find charitable causes in your area.".light_magenta
         puts ""
         input = gets.strip
         zipcode_check = API.getting_zipcode(input)
         if zipcode_check 
         zipcode
         else 
-            puts "That zipcode was invalid, please try again.".red
+            puts "That zip code was invalid, please try again.".red
             first_menu
         end
     end
 
     def zipcode
             puts ""
-            puts "Here is a list of charities in your zipcode:".light_magenta
+            puts "Here is a list of charities in your zip code:".light_magenta
             puts ""
            Charity.all.each_with_index do |charity, index|
                 puts "#{index +1}. #{charity.charityName}".light_blue
@@ -68,8 +68,8 @@ class CLI
         puts ""
         puts "I hope you found the information you were looking for!".light_magenta
         puts "Please enter the number of an option below".light_magenta
-        puts "1. I want to check another zipcode".light_blue
-        puts "2. I want to get more information on a charity in my zipcode".light_blue
+        puts "1. I want to broaden my search to inlcude another zip code".light_blue
+        puts "2. I want to get more information on a charity in my zip code".light_blue
         puts "3. I would like to exit".light_blue
         puts ""
         third_input = gets.strip
