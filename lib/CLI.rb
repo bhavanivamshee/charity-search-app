@@ -14,7 +14,12 @@ class CLI
         puts "Please enter your zip code below to find charitable causes in your area.".light_magenta
         puts ""
         input = gets.strip
+        binding.pry
+        if Charity.find_by_zip(input)
+            zipcode_check = Charity.find_by_zip(input)
+        else
         zipcode_check = API.getting_zipcode(input)
+        end
         if zipcode_check 
         zipcode
         else 
@@ -91,5 +96,6 @@ class CLI
             second_menu
         end
     end
+
 
 end
