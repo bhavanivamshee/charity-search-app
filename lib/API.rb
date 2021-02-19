@@ -10,15 +10,6 @@ class API
         data_array.each do |data| 
             Charity.new(data)
         end
-
-
-        #uncoded_data = response["data"].values_at(0, 1, 2, 3)
-
-        #charityName = uncoded_data.map do |hash| 
-           # hash.select do |key,value|
-              #  ["charityName"].include? key
-         #   end
-       # end
         
        
 
