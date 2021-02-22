@@ -1,71 +1,29 @@
-# Project Title
+# Charity Search App
 
-One Paragraph of project description goes here
-
-This initially appeared on
-[gist](https://gist.github.com/PurpleBooth/109311bb0361f32d87a2), but as
-I can no longer open that page as there are too many comments, I have
-moved it here.
+The Charity Search App is a tool that allows the user to browse IRS-approved nonprofit organizations. Once the user enters their zipcode, the app shows them the names of 20 charitible organizations. The user can then select an organization to learn more details such as the name, mission statement, category and URL. Afterwards, the user can add another zipcode to the list they have generated, or exit the app. 
 
 ## Summary
 
-  - [Getting Started](#getting-started)
-  - [Runing the tests](#running-the-tests)
-  - [Deployment](#deployment)
+  - [Installation](#installation)
+  - [Usage](#usage)
   - [Built With](#built-with)
   - [Contributing](#contributing)
   - [Versioning](#versioning)
   - [Authors](#authors)
   - [License](#license)
-  - [Acknowledgments](#acknowledgments)
 
-## Getting Started
+## Installation
 
-These instructions will get you a copy of the project up and running on
-your local machine for development and testing purposes. See deployment
-for notes on how to deploy the project on a live system.
+Clone respository to chosen directory
 
-### Prerequisites
-
-What things you need to install the software and how to install them
-
-    Give examples
-
-### Installing
-
-A step by step series of examples that tell you how to get a development
-env running
-
-Say what the step will be
-
-    Give the example
-
-And repeat
-
-    until finished
-
-End with an example of getting some data out of the system or using it
-for a little demo
-
-## Running the tests
-
-Explain how to run the automated tests for this system
-
-### Break down into end to end tests
-
-Explain what these tests test and why
-
-    Give an example
-
-### And coding style tests
-
-Explain what these tests test and why
-
-    Give an example
+git clone git@github.com:bhavanivamshee/charity-search-app.git
 
 ## Deployment
 
-Add additional notes about how to deploy this on a live system
+CD into the application
+    cd charity-search-app/
+Enter the command written below and follow the prompts on screen
+    bin/run/charity-search-app
 
 ## Built With
 
@@ -100,8 +58,3 @@ This project is licensed under the [CC0 1.0 Universal](LICENSE.md)
 Creative Commons License - see the [LICENSE.md](LICENSE.md) file for
 details
 
-## Acknowledgments
-
-  - Hat tip to anyone whose code was used
-  - Inspiration
-  - etc
